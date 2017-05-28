@@ -1,0 +1,73 @@
+\ProvidesPackage{math-commands}
+\usepackage{xparse}
+\usepackage{amsmath}
+
+% sets of numbers
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+
+% \integral command
+\DeclareDocumentCommand{\integral}{ s O{} O{} m m }{
+\IfBooleanTF {#1}
+  {
+    \IfValueTF{#2}{
+      \IfValueTF{#3}{
+        \int\limits_{#2}^{#3} \! #4 \, \mathrm{d}#5
+      }{
+        \int\limits_{#2} \! #4 \, \mathrm{d}#5
+      }
+    }{
+      \int \! #4 \, \mathrm{d}#5
+    }
+  }
+  { \int_{#2}^{#3} \! #4 \, \mathrm{d}#5 }
+}
+
+% \iintegral command
+\DeclareDocumentCommand{\iintegral}{ s O{} O{} m m m}{
+\IfBooleanTF {#1}
+  {
+    \IfValueTF{#2}{
+      \IfValueTF{#3}{
+        \iint\limits_{#2}^{#3} \! #4 \, \mathrm{d}#5 \mathrm{d}#6
+      }{
+        \iint\limits_{#2} \! #4 \, \mathrm{d}#5 \mathrm{d}#6
+      }
+    }{
+      \iint \! #4 \, \mathrm{d}#5 \mathrm{d}#6
+    }
+  }
+  { \iint_{#2}^{#3} \! #4 \, \mathrm{d}#5 \mathrm{d}#6 }
+}
+
+\DeclareDocumentCommand{\f}{ m m }{
+  \, \mathrm{#1} \left( {#2} \right)
+}
+
+% define dot product function
+\newcommand{\fdot}[2]{
+  \f{dot}{\vec #1, \vec #2}
+}
+
+% dot vector product symbol
+\newcommand{\vdot}[2]{
+  \vec #1 \cdot \vec #2
+}
+
+% define cross product function
+\newcommand{\fcross}[2]{
+  \f{cross}{\vec #1, \vec #2}
+}
+
+% cross vector product symbol
+\newcommand{\cross}[2]{
+  \vec #1 \times \vec #2
+}
+
+% absolute value
+\newcommand{\abs}[1] {
+  \left\lvert #1 \right\rvert
+}
