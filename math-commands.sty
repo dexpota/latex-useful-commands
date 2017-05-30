@@ -1,6 +1,7 @@
 \ProvidesPackage{math-commands}
 \usepackage{xparse}
 \usepackage{amsmath}
+\usepackage{amsfonts}
 
 % sets of numbers
 \newcommand{\N}{\mathbb{N}}
@@ -47,6 +48,10 @@
   \, \mathrm{#1} \left( {#2} \right)
 }
 
+\DeclareDocumentCommand{\mapping}{ m m m}{
+  \mathrm{#1} : {#2} \rightarrow {#3}
+}
+
 % define dot product function
 \newcommand{\fdot}[2]{
   \f{dot}{\vec #1, \vec #2}
@@ -54,7 +59,7 @@
 
 % dot vector product symbol
 \newcommand{\vdot}[2]{
-  \vec #1 \cdot \vec #2
+  \, \vec #1 \cdot \vec #2 \,
 }
 
 % define cross product function
